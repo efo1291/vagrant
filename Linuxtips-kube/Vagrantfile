@@ -1,0 +1,33 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-18.04"
+  config.vm.define "kube01" do |kb1|    
+    # kb1.vm.disk
+    kb1.vm.hostname = "kube01"
+    kb1.vm.network "public_network", ip: "192.168.0.181"
+    kb1.vm.provider "virtualbox" do |vb|
+      vb.name = "kube01"
+      vb.memory = "4098"
+      vb.cpus = "4"
+    end
+  end
+  config.vm.define "kube02" do |kb2|    
+    # kb2.vm.disk
+    kb2.vm.hostname = "kube02"
+    kb2.vm.network "public_network", ip: "192.168.0.182"
+    kb2.vm.provider "virtualbox" do |vb|
+      vb.name = "kube02"
+    end
+  end  
+  config.vm.define "kube03" do |kb3|    
+    # kb3.vm.disk
+    kb3.vm.hostname = "kube03"
+    kb3.vm.network "public_network", ip: "192.168.0.183"
+    kb3.vm.provider "virtualbox" do |vb|
+      vb.name = "kube03"
+    end
+  end
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+    vb.cpus = "2"
+  end
+end
